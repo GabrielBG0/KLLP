@@ -1,8 +1,9 @@
 use csv;
+use native_windows_gui::stretch::node::Node;
 use std::collections::HashMap;
 use std::error::Error;
 
-#[derive(Hash, Eq, PartialEq, Debug)]
+#[derive(Hash, Eq, PartialEq, Debug, Clone)]
 pub struct Word {
     pub id: Option<u32>,
     pub word: String,
@@ -37,6 +38,16 @@ impl Word {
             mastered,
         }
     }
+    pub fn clean_print(self) {
+        println!(
+            "id: {}, word: {}, meaning: {}, views: {}, mastered: {}",
+            self.id.unwrap(),
+            self.word,
+            self.meaning,
+            self.views.unwrap(),
+            self.mastered
+        )
+    }
 }
 
 pub fn csv_to_dict(path: &str) -> Result<HashMap<u32, Word>, Box<dyn Error>> {
@@ -56,4 +67,16 @@ pub fn csv_to_dict(path: &str) -> Result<HashMap<u32, Word>, Box<dyn Error>> {
         );
     }
     Ok(dict)
+}
+
+impl Default for Word {
+    fn default() -> Self {
+        Word {
+            id: Some(0),
+            word: String::new(),
+            meaning: String::new(),
+            views: Some(0),
+            mastered: false,
+        }
+    }
 }
