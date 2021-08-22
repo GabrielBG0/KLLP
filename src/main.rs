@@ -1,3 +1,4 @@
+mod card_maneger;
 mod database_maneger;
 use rusqlite::Connection;
 use std::{fs::read_dir, panic};

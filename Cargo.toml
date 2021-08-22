@@ -8,9 +8,11 @@ edition = "2018"
 
 [dependencies]
 csv = "1.1.6"
+indicatif = "0.16.2"
 libsqlite3-sys = "0.22.2"
 native-windows-derive = "1.0.4"
 native-windows-gui = "1.0.10"
+rand = "0.8.4"
 
 [dependencies.rusqlite]
 version = "0.25.1"
